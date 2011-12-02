@@ -15,7 +15,7 @@ $GLOBALS['TL_DCA']['tl_layout']['fields']['mimikry_output'] = array
 	'inputType'				=> "select",
 	'options'				=> array("default","page_mimiky"),
 	'reference'               => &$GLOBALS['TL_LANG']['tl_layout']['mimikry_output'],
-	'eval'                  => array('submitOnChange'=>true)
+	'eval'                  => array('submitOnChange'=>true,'tl_class' => 'w50')
 );
 $GLOBALS['TL_DCA']['tl_layout']['fields']['mimikry_output_type'] = array
 (
@@ -24,7 +24,7 @@ $GLOBALS['TL_DCA']['tl_layout']['fields']['mimikry_output_type'] = array
 	'inputType'				=> "select",
 	'options'				=> array("PDF"),
 	'reference'               => &$GLOBALS['TL_LANG']['tl_layout']['mimikry_output'],
-	'eval'                  => array('submitOnChange'=>true,'tl_style' => 'w50')
+	'eval'                  => array('submitOnChange'=>true)
 );
 $GLOBALS['TL_DCA']['tl_layout']['fields']['mimikry_margins'] = array
 (

@@ -1,0 +1,4 @@
+page_mimikry stellt einen neuen konfigurierbaren Typ fuer das Seitenlayout bereit.
+Verknuepft mit einer Seite im Seitenbaum, wird nicht der normale HTML Ausgabe generiert, sondern zum Beispiel ein PDF.
+
+D.h. es koennen individuelle Seiten speziell fuer die PDF Ausgabe generiert werden.

@@ -151,7 +151,7 @@ class MimikryPDF extends TCPDF
     public function Footer() 
 	{
         // Position at 15 mm from bottom
-        $this->SetY(-7);
+        $this->SetY(-3);
     	$this->writeHTML($this->strFooterText, true, false, true, false, '');
     }
 }
