@@ -99,24 +99,22 @@ class PageMimikry extends PageRegular
 				
 		$pdf->setHeaderFont(Array(PDF_FONT_NAME_MAIN, '', PDF_FONT_SIZE_MAIN));
 		$pdf->SetMargins($arrMargin[1],$arrMargin[0],$arrMargin[2]);
-		$pdf->SetHeaderMargin($arrMargin[0]);
-		$pdf->SetFooterMargin($arrMargin[3]);
-
+		
 		$pdf->setHeaderText($strHeader);
 		$pdf->setFooterText($strFooter);
 
-		
-		
-// add a page
-$pdf->AddPage();
+				
+				
+		// add a page
+		$pdf->AddPage();
 
-$strMain = $this->replaceInsertTags($this->Template->main);
+		$strMain = $this->replaceInsertTags($this->Template->main);
 
-$pdf->writeHTML($strMain, true, false, true, false, '');
+		$pdf->writeHTML($strMain, true, false, true, false, '');
 
-$pdf->lastPage();
+		$pdf->lastPage();
 
-$pdf->Output(standardize($this->Template->pageTitle).'.pdf', 'I');
+		$pdf->Output(standardize($this->Template->pageTitle).'.pdf', 'I');
 
 
 	}
