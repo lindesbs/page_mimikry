@@ -5,12 +5,13 @@ class PageMimikry extends PageRegular
 
 	public function mimikryGeneratePage(Database_Result $objPage, Database_Result $objLayout, PageRegular $objPageRegular)
 	{
-		if ($objLayout->mimikry_output!='default')
+		if (($objLayout->mimikry_output) && ($objLayout->mimikry_output!='default'))
 		{
 		
 			//print_a($objPage);
 			//print_a($objLayout);
 			//print_a($objPageRegular);
+			
 			
 			$this->Template = $objPageRegular->Template;
 			$this->outputMimikryPage($objPage,$objPageRegular,$objLayout);
