@@ -5,7 +5,7 @@ $GLOBALS['TL_DCA']['tl_layout']['palettes']['__selector__'][] = 'mimikry_output'
 $GLOBALS['TL_DCA']['tl_layout']['palettes']['default'] = str_replace(",name,",",name,mimikry_output,",$GLOBALS['TL_DCA']['tl_layout']['palettes']['default']);
 
 $GLOBALS['TL_DCA']['tl_layout']['palettes']['page_mimiky'] = '{title_legend},name,mimikry_output,mimikry_output_type;'.
-			'{header_legend},mimikry_output_orientation,mimikry_output_unit,mimikry_margins;{style_legend},stylesheet,aggregate,skipTinymce;{modules_legend},modules';
+			'{header_legend},mimikry_output_orientation,mimikry_output_unit,mimikry_margins,mimikry_doctype;{style_legend},stylesheet,aggregate,skipTinymce;{modules_legend},modules';
 
 $GLOBALS['TL_DCA']['tl_layout']['fields']['mimikry_output'] = array
 (
@@ -32,6 +32,15 @@ $GLOBALS['TL_DCA']['tl_layout']['fields']['mimikry_margins'] = array
 	'exclude'               => true,
 	'inputType'				=> "text",
 	'eval'                  => array('rgxp'=>'digit','size'=>4,'multiple'=>true)
+);
+
+
+$GLOBALS['TL_DCA']['tl_layout']['fields']['mimikry_doctype'] = array
+(
+	'label'                 => &$GLOBALS['TL_LANG']['tl_layout']['mimikry_doctype'],		
+	'exclude'               => true,
+	'inputType'				=> "text",
+	'eval'                  => array('mandatory'=>true)
 );
 		
 $GLOBALS['TL_DCA']['tl_layout']['fields']['mimikry_output_unit'] = array
@@ -79,21 +88,14 @@ class tl_layout_pdf_mimikry extends Backend
 			return;
 		}
 		
-		
 		$arrModules = array(
 			'header'	=> 1,
 			'headerHeight'	=> array('unit' => 'mm','value' => "1"),
 			'footer'	=> 1,
 			'footerHeight'	=> array('unit' => 'mm','value' => "1"),
 			'cols'		=> '1cl',
-			'modules' => array(
-			
-				array('mod' => "0",'col'=>'footer'),
-				array('mod' => "0",'col'=>'header'),
-				array('mod' => "0",'col'=>'main'),
-			)
+			'doctype'	=> $dc->activeRecord->mimikry_doctype
 		);
-		
 
 		$this->Database->prepare("UPDATE tl_layout %s WHERE id=?")
 						->set($arrModules)
