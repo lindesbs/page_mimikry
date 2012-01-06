@@ -52,8 +52,19 @@ class PageMimikry extends PageRegular
 		}
 
 		// Execute AFTER the modules have been generated and create footer scripts first
-		$objRegular->createFooterScripts($objLayout);
-		$objRegular->createHeaderScripts($objLayout);
+		
+		if(version_compare(VERSION . '.' . BUILD, '2.9.9', '<'))
+		{
+			$objRegular->createFooterScripts($objLayout);
+			$objRegular->createHeaderScripts($objLayout);
+		}
+		else
+		{
+			$objRegular->createFooterScripts($objPage,$objLayout);
+			$objRegular->createHeaderScripts($objPage,$objLayout);
+		}
+		
+		
 
 		// Add an invisible character to empty sections (IE fix)
 		if (!$this->Template->header && $objLayout->header)
